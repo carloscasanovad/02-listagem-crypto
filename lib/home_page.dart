@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'bottom_navigation_icons.dart';
 import 'constants.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +14,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final currency = NumberFormat("#,##0.00", "pt_BR");
   double userBalance = 1000;
+  int _selectedIndex = 0;
+
+  String validateProfitability(double profitability) {
+    profitability >= 0 ? print('+') : print("-");
+
+    return '24';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +123,37 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.red,
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          _selectedIndex = index;
+          setState(() {});
+        },
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              BottomNavigationIcons.warren,
+              size: 22,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              BottomNavigationIcons.wallet,
+              size: 22,
+            ),
+            label: 'Carteiras',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              BottomNavigationIcons.balance,
+              size: 22,
+            ),
+            label: 'Movimentações',
+          ),
+        ],
       ),
     );
   }
