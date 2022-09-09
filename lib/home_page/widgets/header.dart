@@ -23,7 +23,7 @@ class _HeaderState extends ConsumerState<Header> {
     final bool visibility = ref.watch(visibilityProvider);
     return Container(
       margin: const EdgeInsets.only(
-        bottom: 44,
+        bottom: 42,
       ),
       child: Column(
         children: <Widget>[
