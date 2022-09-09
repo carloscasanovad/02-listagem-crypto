@@ -24,7 +24,7 @@ class _HeaderState extends ConsumerState<Header> {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(25.0),
+          padding: kDefaultPadding,
           child: Column(
             children: [
               Row(
@@ -41,7 +41,7 @@ class _HeaderState extends ConsumerState<Header> {
                     },
                     icon: const Icon(
                       Icons.remove_red_eye_rounded,
-                      size: 24,
+                      size: 26,
                     ),
                   )
                 ],

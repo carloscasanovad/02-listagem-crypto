@@ -1,9 +1,10 @@
 import 'dart:ui';
 
+import 'package:crypto/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../utils/constants/constants.dart';
+import '../../cryptos/cryptos.dart';
 import '../../utils/providers/providers.dart';
 
 class CryptoCards extends ConsumerStatefulWidget {
@@ -18,7 +19,7 @@ class CryptoCards extends ConsumerStatefulWidget {
 class _CryptoCardsState extends ConsumerState<CryptoCards> {
   String validateProfit(double profitability) {
     if (profitability >= 0) {
-      return '+${profitability.toString()}%';
+      return '+${profitability.toStringAsFixed(0)}%';
     }
     return '${profitability.toString()}%';
   }
@@ -35,12 +36,11 @@ class _CryptoCardsState extends ConsumerState<CryptoCards> {
             child: ListTile(
               title: Text(
                 '${crypto['shortName']}',
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
+                style: kCryptoCardTitleStyle,
               ),
               subtitle: Text(
                 '${crypto['fullName']}',
+                style: kCryptoCardSubtitleStyle,
               ),
               leading: CircleAvatar(
                 backgroundColor: const Color(0x00ffffff),
@@ -52,15 +52,11 @@ class _CryptoCardsState extends ConsumerState<CryptoCards> {
                 children: <Widget>[
                   ImageFiltered(
                     imageFilter: visibility
-                        ? ImageFilter.blur(sigmaX: 0, sigmaY: 0)
+                        ? ImageFilter.blur()
                         : ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                     child: const Text(
                       'US\$ 0,00',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: kCryptoCardTrailingTextStyle,
                     ),
                   ),
                   const SizedBox(
@@ -80,8 +76,9 @@ class _CryptoCardsState extends ConsumerState<CryptoCards> {
                       child: Text(
                         validateProfit(crypto['profitability'].toDouble()),
                         style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 12.5,
+                          fontFamily: 'SourceSansPro-Light',
+                          fontWeight: FontWeight.w700,
                           color: crypto['profitability'] >= 0
                               ? const Color(0xFF0C5F2C)
                               : const Color(0xFF9A1414),
