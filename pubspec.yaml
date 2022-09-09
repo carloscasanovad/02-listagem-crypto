@@ -84,6 +84,9 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat.ttf
           weight: 700
+    - family: SourceSansPro-Light
+      fonts:
+        - asset: assets/fonts/SourceSansPro-Light.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #
   # For details regarding fonts from package dependencies,

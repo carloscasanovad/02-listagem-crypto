@@ -14,12 +14,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final currency = NumberFormat("#,##0.00", "pt_BR");
   double userBalance = 1000;
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   String validateProfitability(double profitability) {
-    profitability >= 0 ? print('+') : print("-");
-
-    return '24';
+    if (profitability >= 0) {
+      return '+${profitability.toString()}%';
+    }
+    return '${profitability.toString()}%';
   }
 
   @override
@@ -65,6 +66,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: cryptos.length,
                 itemBuilder: (context, index) {
                   Map<String, dynamic> crypto = cryptos[index];
+
                   return Card(
                     child: ListTile(
                       title: Text(
@@ -99,17 +101,22 @@ class _HomePageState extends State<HomePage> {
                             width: 62,
                             height: 20,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFD6FFDF),
+                              color: crypto['profitability'] >= 0
+                                  ? const Color(0xFFA0F4E0)
+                                  : const Color(0xFFF7A1A1),
                               borderRadius: BorderRadius.circular(16),
                             ),
-                            child: const Align(
+                            child: Align(
                               alignment: Alignment.center,
                               child: Text(
-                                '75%',
+                                validateProfitability(
+                                    crypto['profitability'].toDouble()),
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF0C5F2C),
+                                  color: crypto['profitability'] >= 0
+                                      ? const Color(0xFF0C5F2C)
+                                      : const Color(0xFF9A1414),
                                 ),
                               ),
                             ),
