@@ -11,26 +11,6 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 1;
-  List<Map<String, String>> navBarIcons = [
-    {"icon": 'assets/img/warren.png', "label": 'Home'},
-    {"icon": 'assets/img/wallet.png', "label": "Carteiras"},
-    {"icon": 'assets/img/balance.png', "label": "Movimentações"}
-  ];
-  List<BottomNavigationBarItem> buildNavBarItems() {
-    List<BottomNavigationBarItem> navBarItems = [];
-    for (var navBarIcon in navBarIcons) {
-      navBarItems.add(
-        BottomNavigationBarItem(
-          icon: ImageIcon(
-            AssetImage('${navBarIcon['icon']}'),
-            size: 22,
-          ),
-          label: navBarIcon['label'],
-        ),
-      );
-    }
-    return navBarItems;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +21,29 @@ class _BottomNavBarState extends State<BottomNavBar> {
         _selectedIndex = index;
         setState(() {});
       },
-      items: buildNavBarItems(),
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: ImageIcon(
+            AssetImage('assets/img/warren.png'),
+            size: 22,
+          ),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: ImageIcon(
+            AssetImage('assets/img/wallet.png'),
+            size: 22,
+          ),
+          label: 'Carteiras',
+        ),
+        BottomNavigationBarItem(
+          icon: ImageIcon(
+            AssetImage('assets/img/balance.png'),
+            size: 22,
+          ),
+          label: 'Movimentações',
+        ),
+      ],
     );
   }
 }
