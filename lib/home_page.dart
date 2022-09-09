@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -12,11 +14,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final currency = NumberFormat("#,##0.00", "pt_BR");
+  final currency = NumberFormat("#,##0.00", "en_US");
   double userBalance = 1000;
   int _selectedIndex = 1;
-
-  String validateProfitability(double profitability) {
+  bool _visibility = true;
+  String validateProfit(double profitability) {
     if (profitability >= 0) {
       return '+${profitability.toString()}%';
     }
@@ -41,7 +43,10 @@ class _HomePageState extends State<HomePage> {
                         style: kTitleTextStyle,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _visibility = !_visibility;
+                          setState(() {});
+                        },
                         icon: const Icon(
                           Icons.remove_red_eye_rounded,
                           size: 30,
@@ -52,9 +57,18 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Text(
-                        'US\$ ${currency.format(userBalance)}',
+                      const Text(
+                        "US\$ ",
                         style: kTitleTextStyle,
+                      ),
+                      ImageFiltered(
+                        imageFilter: _visibility
+                            ? ImageFilter.blur(sigmaX: 0, sigmaY: 0)
+                            : ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                        child: Text(
+                          currency.format(userBalance),
+                          style: kTitleTextStyle,
+                        ),
                       ),
                     ],
                   )
@@ -86,12 +100,17 @@ class _HomePageState extends State<HomePage> {
                       trailing: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          const Text(
-                            'US\$ 0,00',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
+                          ImageFiltered(
+                            imageFilter: _visibility
+                                ? ImageFilter.blur(sigmaX: 0, sigmaY: 0)
+                                : ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                            child: const Text(
+                              'US\$ 0,00',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           const SizedBox(
@@ -109,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                             child: Align(
                               alignment: Alignment.center,
                               child: Text(
-                                validateProfitability(
+                                validateProfit(
                                     crypto['profitability'].toDouble()),
                                 style: TextStyle(
                                   fontSize: 12,
