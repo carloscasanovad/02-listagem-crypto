@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:crypto/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../cryptos/cryptos.dart';
 import '../../utils/providers/providers.dart';
@@ -17,6 +18,7 @@ class CryptoCards extends ConsumerStatefulWidget {
 }
 
 class _CryptoCardsState extends ConsumerState<CryptoCards> {
+  final currency = NumberFormat("#,##0.00", "en_US");
   String validateProfit(double profitability) {
     if (profitability >= 0) {
       return '+${profitability.toStringAsFixed(0)}%';
@@ -49,13 +51,14 @@ class _CryptoCardsState extends ConsumerState<CryptoCards> {
               ),
               trailing: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   ImageFiltered(
                     imageFilter: visibility
                         ? ImageFilter.blur()
                         : ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                    child: const Text(
-                      'US\$ 0,00',
+                    child: Text(
+                      'US\$ ${currency.format(crypto['userBalance'])}',
                       style: kCryptoCardTrailingTextStyle,
                     ),
                   ),
