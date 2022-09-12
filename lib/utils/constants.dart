@@ -18,7 +18,7 @@ const kSubtitleTextStyle = TextStyle(
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w600,
 );
-
+const String kDefaultHideValues = "\u2022\u2022\u2022\u2022\u2022";
 const kDefaultPadding = EdgeInsets.all(20.0);
 
 const kNavBarSelectedIconColor = Color(0xFFE02B57);
