@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 
 const kTitleTextStyle = TextStyle(
   fontSize: 32,
+  color: Color(0xffE02B57),
+  fontFamily: 'Montserrat',
+  fontWeight: FontWeight.w700,
+);
+const kWalletBalanceTextStyle = TextStyle(
+  fontSize: 32,
   color: Color(0xff2F2F33),
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w700,

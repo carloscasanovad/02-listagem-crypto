@@ -27,7 +27,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             AssetImage('assets/img/warren.png'),
             size: 22,
           ),
-          label: 'Portofólio',
+          label: 'Portfólio',
         ),
         BottomNavigationBarItem(
           icon: ImageIcon(

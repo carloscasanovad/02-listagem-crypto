@@ -41,7 +41,7 @@ class _HeaderState extends ConsumerState<Header> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Carteira',
+                    'Cripto',
                     style: kTitleTextStyle,
                   ),
                   IconButton(
@@ -63,7 +63,7 @@ class _HeaderState extends ConsumerState<Header> {
                 children: [
                   const Text(
                     "R\$ ",
-                    style: kTitleTextStyle,
+                    style: kWalletBalanceTextStyle,
                   ),
                   ImageFiltered(
                     imageFilter: visibility
@@ -71,7 +71,7 @@ class _HeaderState extends ConsumerState<Header> {
                         : ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                     child: Text(
                       walletBalance(),
-                      style: kTitleTextStyle,
+                      style: kWalletBalanceTextStyle,
                     ),
                   ),
                 ],
