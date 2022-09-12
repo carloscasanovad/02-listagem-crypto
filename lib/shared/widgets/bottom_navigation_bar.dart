@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../constants/constants.dart';
+import '../constants/app_colors.dart';
+import '../providers/asset_provider.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedItemColor: Colors.red,
+      selectedItemColor: kDefaultRed,
       currentIndex: _selectedIndex,
       onTap: (index) {
         _selectedIndex = index;
@@ -24,14 +24,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: ImageIcon(
-            AssetImage('assets/img/warren.png'),
+            warrenIcon,
             size: 22,
           ),
           label: 'Portfólio',
         ),
         BottomNavigationBarItem(
           icon: ImageIcon(
-            AssetImage('assets/img/cryptocurrency.png'),
+            cryptoCurrencyIcon,
             size: 24,
           ),
           label: 'Movimentações',
