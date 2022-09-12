@@ -1,12 +1,18 @@
+import 'package:crypto/screens/wallet/wallet_page.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'screens/home_page/home_page.dart';
 
 void main() {
-  runApp(const ProviderScope(
-    child: MyApp(),
-  ));
+  runApp(
+    ProviderScope(
+      child: DevicePreview(
+        enabled: false,
+        builder: (context) => const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => const HomePage(),
+          '/': (context) => const WalletPage(),
         },
       );
 }

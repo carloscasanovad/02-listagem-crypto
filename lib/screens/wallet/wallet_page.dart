@@ -8,16 +8,16 @@ import '../../data/crypto_list_repository.dart';
 import '../../model/crypto_list_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/bottom_navigation_bar.dart';
-import '../../utils/constants.dart';
+import '../../shared/constants/constants.dart';
 
-class HomePage extends ConsumerStatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class WalletPage extends ConsumerStatefulWidget {
+  const WalletPage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<HomePage> createState() => _HomePageState();
+  ConsumerState<WalletPage> createState() => _HomePageState();
 }
 
-class _HomePageState extends ConsumerState<HomePage> {
+class _HomePageState extends ConsumerState<WalletPage> {
   final formater = NumberFormat("#,##0.00", "pt");
   CryptoListRepository repository = CryptoListRepository();
 
