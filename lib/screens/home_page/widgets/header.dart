@@ -49,8 +49,10 @@ class _HeaderState extends ConsumerState<Header> {
                       ref.read(visibilityProvider.notifier).state = !visibility;
                       setState(() {});
                     },
-                    icon: const Icon(
-                      Icons.remove_red_eye_rounded,
+                    icon: Icon(
+                      visibility
+                          ? Icons.visibility_rounded
+                          : Icons.visibility_off_rounded,
                       size: 26,
                     ),
                   )
