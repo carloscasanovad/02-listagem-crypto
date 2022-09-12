@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/constants.dart';
-
+import '../../utils/constants.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -28,7 +27,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             AssetImage('assets/img/warren.png'),
             size: 22,
           ),
-          label: 'Home',
+          label: 'Portofólio',
         ),
         BottomNavigationBarItem(
           icon: ImageIcon(

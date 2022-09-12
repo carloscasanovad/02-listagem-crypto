@@ -22,7 +22,6 @@ const kCryptoCardTitleStyle = TextStyle(
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w700,
 );
-
 const kCryptoCardSubtitleStyle = TextStyle(
   fontSize: 15,
   fontFamily: 'SourceSansPro-Light',
@@ -32,4 +31,10 @@ const kCryptoCardTrailingTextStyle = TextStyle(
   fontSize: 20,
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w700,
+);
+const kCryptoExchangeTrailingTextStyle = TextStyle(
+  fontSize: 15,
+  fontFamily: 'SourceSansPro-Light',
+  fontWeight: FontWeight.w700,
+  color: Color(0xFF757680),
 );

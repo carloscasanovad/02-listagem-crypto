@@ -1,11 +1,12 @@
 import 'dart:ui';
 
+import 'package:crypto/data/crypto_list_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../../shared/constants/constants.dart';
 import '../../../shared/providers/providers.dart';
+import '../../../utils/constants.dart';
 
 class Header extends ConsumerStatefulWidget {
   const Header({Key? key}) : super(key: key);
@@ -14,8 +15,15 @@ class Header extends ConsumerStatefulWidget {
   ConsumerState<Header> createState() => _HeaderState();
 }
 
-final currency = NumberFormat("#,##0.00", "pt");
-double userBalance = 14798;
+String walletBalance() {
+  final formater = NumberFormat("#,##0.00", "pt");
+  CryptoListRepository repository = CryptoListRepository();
+  double wallet = 0;
+  for (var crypto in repository.cryptoListRepository) {
+    wallet += crypto.userBalance;
+  }
+  return formater.format(wallet);
+}
 
 class _HeaderState extends ConsumerState<Header> {
   @override
@@ -60,7 +68,7 @@ class _HeaderState extends ConsumerState<Header> {
                         ? ImageFilter.blur()
                         : ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                     child: Text(
-                      currency.format(userBalance),
+                      walletBalance(),
                       style: kTitleTextStyle,
                     ),
                   ),
