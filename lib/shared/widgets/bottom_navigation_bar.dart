@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/constants/constants.dart';
+import '../constants/constants.dart';
+
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +32,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         BottomNavigationBarItem(
           icon: ImageIcon(
-            AssetImage('assets/img/wallet.png'),
-            size: 22,
-          ),
-          label: 'Carteiras',
-        ),
-        BottomNavigationBarItem(
-          icon: ImageIcon(
-            AssetImage('assets/img/balance.png'),
-            size: 22,
+            AssetImage('assets/img/cryptocurrency.png'),
+            size: 24,
           ),
           label: 'Movimentações',
         ),

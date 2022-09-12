@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'home_page/home_page.dart';
+
+import 'ui/home_page/home_page.dart';
 
 void main() {
   runApp(const ProviderScope(
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomePage(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const HomePage(),
+        },
       );
 }

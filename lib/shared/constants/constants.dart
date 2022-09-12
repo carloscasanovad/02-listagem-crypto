@@ -4,7 +4,13 @@ const kTitleTextStyle = TextStyle(
   fontSize: 32,
   color: Color(0xff2F2F33),
   fontFamily: 'Montserrat',
-  fontWeight: FontWeight.w700
+  fontWeight: FontWeight.w700,
+);
+const kSubtitleTextStyle = TextStyle(
+  fontSize: 18,
+  color: Color(0xff757680),
+  fontFamily: 'Montserrat',
+  fontWeight: FontWeight.w600,
 );
 
 const kDefaultPadding = EdgeInsets.all(20.0);
@@ -16,6 +22,7 @@ const kCryptoCardTitleStyle = TextStyle(
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w700,
 );
+
 const kCryptoCardSubtitleStyle = TextStyle(
   fontSize: 15,
   fontFamily: 'SourceSansPro-Light',
