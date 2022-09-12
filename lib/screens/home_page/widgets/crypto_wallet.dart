@@ -99,7 +99,7 @@ class _CryptoCardsState extends ConsumerState<CryptoWallet> {
                       onPressed: () {},
                       icon: const Icon(
                         Icons.arrow_forward_ios,
-                        size: 15,
+                        size: 14.5,
                       ),
                     ),
                   )
