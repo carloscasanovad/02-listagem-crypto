@@ -15,7 +15,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedItemColor: kNavBarSelectedIconColor,
+      selectedItemColor: Colors.red,
       currentIndex: _selectedIndex,
       onTap: (index) {
         _selectedIndex = index;

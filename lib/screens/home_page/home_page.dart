@@ -107,6 +107,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       repository.cryptoListRepository[index];
                   return Card(
                     child: ListTile(
+                      contentPadding: const EdgeInsets.only(left: 15),
                       title: Text(
                         crypto.shortName,
                         style: kCryptoCardTitleStyle,
