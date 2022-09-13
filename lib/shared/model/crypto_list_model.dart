@@ -3,7 +3,7 @@ class CryptoListModel {
   String fullName;
   String cryptoLogo;
   double profitability;
-  int userBalance;
+  double userBalance;
   double exchange;
   CryptoListModel({
     required this.shortName,

@@ -12,6 +12,10 @@ class CryptoListView extends StatelessWidget {
     CryptoListRepository repository = CryptoListRepository();
     return Expanded(
       child: ListView.builder(
+        shrinkWrap: true,
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: ScrollPhysics(),
+        ),
         itemCount: repository.cryptoListRepository.length,
         itemBuilder: (context, index) {
           CryptoListModel crypto = repository.cryptoListRepository[index];
