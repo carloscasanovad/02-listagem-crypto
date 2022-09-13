@@ -1,5 +1,5 @@
 import '../model/crypto_list_model.dart';
-import '../shared/providers/asset_provider.dart';
+import '../providers/asset_provider.dart';
 
 class CryptoListRepository {
   List<CryptoListModel> cryptoListRepository = [
