@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../model/crypto_list_model.dart';
 import '../../shared/constants/app_text_styles.dart';
+import '../../shared/model/crypto_list_model.dart';
 import '../providers/providers.dart';
 
 class CryptoListTile extends ConsumerStatefulWidget {

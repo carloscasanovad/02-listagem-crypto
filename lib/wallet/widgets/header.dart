@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
-import '../../repositories/crypto_list_repository.dart';
+import '../../shared/repositories/crypto_list_repository.dart';
 import '../providers/providers.dart';
 
 class Header extends ConsumerStatefulWidget {

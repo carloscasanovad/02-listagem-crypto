@@ -1,7 +1,8 @@
 import 'package:crypto/wallet/widgets/crypto_list_tile.dart';
 import 'package:flutter/material.dart';
-import '../../model/crypto_list_model.dart';
-import '../../repositories/crypto_list_repository.dart';
+
+import '../../shared/model/crypto_list_model.dart';
+import '../../shared/repositories/crypto_list_repository.dart';
 
 class CryptoListView extends StatelessWidget {
   const CryptoListView({Key? key}) : super(key: key);
