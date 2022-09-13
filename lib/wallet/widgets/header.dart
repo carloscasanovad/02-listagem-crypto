@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../../data/crypto_list_repository.dart';
 import '../../../shared/constants/app_text_styles.dart';
-import '../../../shared/providers/providers.dart';
+import '../../repositories/crypto_list_repository.dart';
+import '../providers/providers.dart';
 
-class WalletHeader extends ConsumerStatefulWidget {
-  const WalletHeader({Key? key}) : super(key: key);
+class Header extends ConsumerStatefulWidget {
+  const Header({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<WalletHeader> createState() => _WalletHeaderState();
+  ConsumerState<Header> createState() => _WalletHeaderState();
 }
 
-class _WalletHeaderState extends ConsumerState<WalletHeader> {
+class _WalletHeaderState extends ConsumerState<Header> {
   final formater = NumberFormat("#,##0.00", "pt");
   CryptoListRepository repository = CryptoListRepository();
 
