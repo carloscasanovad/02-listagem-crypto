@@ -1,4 +1,4 @@
-import 'package:crypto/wallet/wallet_screen.dart';
+import 'package:crypto/wallet/views/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import '../../shared/widgets/bottom_navigation_bar.dart';
 
