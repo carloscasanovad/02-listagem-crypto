@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
+import 'app_colors.dart';
 
 const kTitleTextStyle = TextStyle(
   fontSize: 32,
-  color: Color(0xffE02B57),
+  color: kDefaultRed,
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w700,
 );
 const kWalletBalanceTextStyle = TextStyle(
   fontSize: 32,
-  color: Color(0xff2F2F33),
+  color: kDefaultBlack,
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w700,
 );
 const kSubtitleTextStyle = TextStyle(
   fontSize: 18,
-  color: Color(0xff757680),
+  color: kDefaultGrey,
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w600,
 );
-const String kDefaultHideValues = "\u2022\u2022\u2022\u2022\u2022";
-const kDefaultPadding = EdgeInsets.all(20.0);
-
-const kNavBarSelectedIconColor = Color(0xFFE02B57);
-
 const kCryptoCardTitleStyle = TextStyle(
   fontSize: 18,
   fontFamily: 'SourceSansPro-Light',
@@ -33,14 +29,18 @@ const kCryptoCardSubtitleStyle = TextStyle(
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w600,
 );
-const kCryptoCardTrailingTextStyle = TextStyle(
+const kCryptoCardBalanceTrailingTextStyle = TextStyle(
   fontSize: 20,
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w700,
+  letterSpacing: 1,
 );
-const kCryptoExchangeTrailingTextStyle = TextStyle(
+const kCryptoCardExchangeTrailingTextStyle = TextStyle(
   fontSize: 15,
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w700,
-  color: Color(0xFF757680),
+  color: kDefaultGrey,
+  letterSpacing: 0.5,
 );
+
+const String kDefaultHideValues = "\u2022\u2022\u2022\u2022\u2022";
