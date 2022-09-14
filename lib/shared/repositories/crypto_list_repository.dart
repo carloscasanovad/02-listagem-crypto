@@ -1,3 +1,5 @@
+import 'package:decimal/decimal.dart';
+
 import '../model/crypto_list_model.dart';
 import '../providers/asset_provider.dart';
 
@@ -16,49 +18,49 @@ class CryptoListRepository {
       shortName: 'BTC',
       fullName: 'Bitcoin',
       cryptoLogo: btcLogo,
-      profitability: 75,
+      profitability: Decimal.parse('75'),
       userBalance: 7996.5,
-      exchange: 114577.93,
+      exchange: Decimal.parse('0.0000095'),
     ),
     CryptoListModel(
       shortName: 'ETH',
       fullName: 'Ethereum',
       cryptoLogo: ethLogo,
-      profitability: 75,
+      profitability: Decimal.parse('25'),
       userBalance: 6557,
-      exchange: 8960.35,
+      exchange: Decimal.parse('0.00012'),
     ),
     CryptoListModel(
       shortName: 'LTC',
       fullName: 'Litecoin',
       cryptoLogo: ltcLogo,
-      profitability: -0.7,
+      profitability: Decimal.parse('-0.7'),
       userBalance: 1245.69,
-      exchange: 318.57,
+      exchange: Decimal.parse('0.0032'),
     ),
     CryptoListModel(
       shortName: 'DOGE',
       fullName: 'DogeCoin',
       cryptoLogo: dogeCoinLogo,
-      profitability: -30,
+      profitability: Decimal.parse('-30'),
       userBalance: 100,
-      exchange: 3.22,
+      exchange: Decimal.parse('3.18'),
     ),
     CryptoListModel(
       shortName: 'ADA',
       fullName: 'Cardano',
       cryptoLogo: adaLogo,
-      profitability: 10,
+      profitability: Decimal.parse('10'),
       userBalance: 940.55,
-      exchange: 2.42,
+      exchange: Decimal.parse('0.40'),
     ),
     CryptoListModel(
       shortName: 'SOL',
       fullName: 'Solana',
       cryptoLogo: solanaLogo,
-      profitability: -5.4,
+      profitability: Decimal.parse('-5.4'),
       userBalance: 550,
-      exchange: 180.19,
+      exchange: Decimal.parse('0.0057'),
     ),
   ];
 }

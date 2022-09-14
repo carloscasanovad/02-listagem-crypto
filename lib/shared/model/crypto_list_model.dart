@@ -1,10 +1,12 @@
+import 'package:decimal/decimal.dart';
+
 class CryptoListModel {
   String shortName;
   String fullName;
   String cryptoLogo;
-  double profitability;
+  Decimal profitability;
   double userBalance;
-  double exchange;
+  Decimal exchange;
   CryptoListModel({
     required this.shortName,
     required this.fullName,

@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -19,10 +20,9 @@ class CryptoListTile extends ConsumerStatefulWidget {
 
 class _CryptoListTileState extends ConsumerState<CryptoListTile> {
   final formater = NumberFormat("#,##0.00", "pt");
-  String currencyConverter(double balance, double exchange, String currency) {
-    String cryptoExchange = '';
-    cryptoExchange = '${(balance / exchange).toStringAsFixed(2)} $currency';
-    return cryptoExchange;
+  String currencyConverter(Decimal balance, Decimal exchange, String currency) {
+    Decimal cryptoExchange = balance * exchange;
+    return '${cryptoExchange.toStringAsFixed(2)} $currency';
   }
 
   @override
@@ -58,15 +58,15 @@ class _CryptoListTileState extends ConsumerState<CryptoListTile> {
               ),
               Container(
                 padding: const EdgeInsets.only(top: 4),
-                width: 80,
+                width: 100,
                 height: 20,
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
                     visibility
                         ? currencyConverter(
-                            widget.model.userBalance.toDouble(),
-                            widget.model.exchange.toDouble(),
+                            Decimal.parse(widget.model.userBalance.toString()),
+                            widget.model.exchange,
                             widget.model.shortName,
                           )
                         : "$kDefaultHideValues ${widget.model.shortName}",
