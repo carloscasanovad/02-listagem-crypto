@@ -1,7 +1,9 @@
+import 'package:crypto/transactions/transactions_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'shared/widgets/bottom_nav_bar.dart';
 import 'wallet/views/wallet_page.dart';
 
 void main() {
@@ -22,12 +24,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         title: 'Crypto',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
         initialRoute: '/',
         routes: {
-          '/': (context) => const WalletPage(),
+          '/': (context) => const BottomNavBar(),
+          '/wallet': (context) => const WalletPage(),
+          '/transactions': (context) => const TransactionsPage(),
         },
       );
 }

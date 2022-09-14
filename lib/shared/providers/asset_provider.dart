@@ -6,3 +6,6 @@ const AssetImage cryptoCurrencyIcon =
 const String btcLogo = 'assets/img/btc.png';
 const String ethLogo = 'assets/img/eth.png';
 const String ltcLogo = 'assets/img/ltc.png';
+const String dogeCoinLogo = 'assets/img/dogecoin.png';
+const String adaLogo = 'assets/img/ada.png';
+const String solanaLogo = 'assets/img/solana.png';
