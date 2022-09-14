@@ -2,6 +2,15 @@ import '../model/crypto_list_model.dart';
 import '../providers/asset_provider.dart';
 
 class CryptoListRepository {
+  Future<List<CryptoListModel>> getAllCryptos() async {
+    List<CryptoListModel> cryptos = [];
+
+    await Future.delayed(const Duration(seconds: 1), () {
+      cryptos = cryptoListRepository;
+    });
+    return cryptos;
+  }
+
   List<CryptoListModel> cryptoListRepository = [
     CryptoListModel(
       shortName: 'BTC',
