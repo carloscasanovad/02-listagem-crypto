@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:crypto/shared/providers/asset_provider.dart';
+import 'package:intl/intl.dart';
 
 import '../../shared/constants/app_colors.dart';
 import '../../shared/model/crypto_list_model.dart';
@@ -34,6 +35,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
 
   @override
   Widget build(BuildContext context) {
+    final formater = NumberFormat("#,##0.00", "pt");
     int chartIndex = ref.watch(chartIndexTappedProvider);
     String chartDay = ref.watch(chartDayProvider);
     return SingleChildScrollView(
@@ -45,11 +47,8 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
             CryptoListModel dataCrypto = snapshot.data!.firstWhere(
               (crypto) => crypto.shortName == widget.cryptoName,
             );
-            print(dataCrypto);
-
-            CryptoListModel cryptoData = snapshot.data![0];
             List points =
-                dataCrypto.marketPriceVariation.values.toList()[chartIndex];
+                dataCrypto.marketPriceUpnDown.values.toList()[chartIndex];
             return Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
@@ -94,7 +93,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'R\$ ${cryptoData.marketActualPrice}',
+                        'R\$ ${dataCrypto.marketHistoryPrice.values.toList()[chartIndex]}',
                         style: const TextStyle(
                           fontSize: 32,
                           color: kDefaultBlack,
@@ -117,7 +116,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                                     switch (value.toInt()) {
                                       case 1:
                                         return Container(
-                                          // margin: const EdgeInsets.only(top: 0),
+                                          margin: const EdgeInsets.only(top: 0),
                                           width: 30,
                                           child: LineChartTitleButton(
                                             dayTitle: '5D',
@@ -217,21 +216,22 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                       ),
                       ListTile(
                         title: const Text('Preço atual'),
-                        trailing: Text('R\$ ${cryptoData.marketActualPrice}'),
+                        trailing: Text(
+                            'R\$ ${dataCrypto.marketHistoryPrice.values.toList()[chartIndex]}'),
                       ),
                       ListTile(
                         title: const Text('Variação do dia'),
                         trailing: Text(
-                            ' ${(cryptoData.percentVariation.values.toList()[chartIndex]).toStringAsFixed(2)}%'),
+                            ' ${(dataCrypto.percentVariation.values.toList()[chartIndex]).toStringAsFixed(2)}%'),
                       ),
                       ListTile(
                         title: const Text('Quantidade'),
                         trailing: Text(
-                            '${(Decimal.parse(cryptoData.userBalance.toString()) * cryptoData.exchange).toStringAsFixed(4)} ${cryptoData.shortName}'),
+                            '${(Decimal.parse(dataCrypto.userBalance.toString()) * dataCrypto.exchange).toStringAsFixed(2)} ${dataCrypto.shortName}'),
                       ),
                       ListTile(
                         title: const Text('Valor'),
-                        trailing: Text('R\$ ${cryptoData.userBalance}'),
+                        trailing: Text('R\$ ${dataCrypto.userBalance}'),
                       ),
                     ],
                   ),

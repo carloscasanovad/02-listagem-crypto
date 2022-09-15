@@ -6,9 +6,9 @@ class CryptoListModel {
   String cryptoLogo;
   Decimal profitability;
   double userBalance;
-  double marketActualPrice;
+  Map<String, double> marketHistoryPrice;
   Map<String, double> percentVariation;
-  Map<String, List<List<double>>> marketPriceVariation;
+  Map<String, List<List<double>>> marketPriceUpnDown;
   Decimal exchange;
   CryptoListModel({
     required this.shortName,
@@ -16,15 +16,16 @@ class CryptoListModel {
     required this.cryptoLogo,
     required this.profitability,
     required this.userBalance,
-    required this.marketActualPrice,
+    required this.marketHistoryPrice,
     required this.percentVariation,
-    required this.marketPriceVariation,
+    required this.marketPriceUpnDown,
     required this.exchange,
   });
 
-// 
+// Sobrescreve o model, caso contrario ao printar os dados
+// irá vir como Instance of '';
   @override
   String toString() {
-    return 'CryptoListModel(shortName: $shortName, fullName: $fullName, cryptoLogo: $cryptoLogo, profitability: $profitability, userBalance: $userBalance, marketActualPrice: $marketActualPrice, percentVariation: $percentVariation, marketPriceVariation: $marketPriceVariation, exchange: $exchange)';
+    return 'CryptoListModel(shortName: $shortName, fullName: $fullName, cryptoLogo: $cryptoLogo, profitability: $profitability, userBalance: $userBalance, marketActualPrice: $marketHistoryPrice, percentVariation: $percentVariation, marketPriceVariation: $marketPriceUpnDown, exchange: $exchange)';
   }
 }
