@@ -30,6 +30,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
   int chartIndex = 0;
   @override
   void initState() {
+
     cryptos = repository.getAllCryptos();
     super.initState();
   }
