@@ -93,7 +93,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'R\$ ${dataCrypto.marketHistoryPrice.values.toList()[chartIndex]}',
+                        'R\$ ${formater.format(dataCrypto.marketHistoryPrice.values.toList()[chartIndex])}',
                         style: const TextStyle(
                           fontSize: 32,
                           color: kDefaultBlack,
@@ -196,7 +196,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                                 bottom: BorderSide(
                                     color: kDefaultGrey.withOpacity(0.3)),
                               ),
-                              //Border.all(color: const Color(0xff37434d), width: 1),
+                       
                             ),
                             lineBarsData: [
                               LineChartBarData(
@@ -217,7 +217,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                       ListTile(
                         title: const Text('Preço atual'),
                         trailing: Text(
-                            'R\$ ${dataCrypto.marketHistoryPrice.values.toList()[chartIndex]}'),
+                            'R\$ ${formater.format(dataCrypto.marketHistoryPrice.values.toList()[chartIndex])}'),
                       ),
                       ListTile(
                         title: const Text('Variação do dia'),
@@ -231,7 +231,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                       ),
                       ListTile(
                         title: const Text('Valor'),
-                        trailing: Text('R\$ ${dataCrypto.userBalance}'),
+                        trailing: Text('R\$ ${formater.format(dataCrypto.userBalance)}'),
                       ),
                     ],
                   ),
