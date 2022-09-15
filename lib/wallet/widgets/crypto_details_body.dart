@@ -1,3 +1,4 @@
+import 'package:crypto/wallet/widgets/chart_list_view_buttons.dart';
 import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import '../../shared/constants/app_colors.dart';
 import '../../shared/model/crypto_list_model.dart';
 import '../../shared/repositories/crypto_list_repository.dart';
 import '../providers/providers.dart';
-import 'line_chart_title_button.dart';
+import 'chart_button.dart';
 
 class CryptoDetailsBody extends ConsumerStatefulWidget {
   String cryptoName;
@@ -37,7 +38,6 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
   Widget build(BuildContext context) {
     final formater = NumberFormat("#,##0.00", "pt");
     int chartIndex = ref.watch(chartIndexTappedProvider);
-    String chartDay = ref.watch(chartDayProvider);
     return SingleChildScrollView(
       child: FutureBuilder(
         future: cryptos,
@@ -71,10 +71,10 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Image.asset(
-                            dataCrypto.cryptoLogo,
-                            height: 48,
-                            width: 48,
+                          CircleAvatar(
+                            backgroundColor: const Color(0x00ffffff),
+                            radius: 30,
+                            backgroundImage: AssetImage(dataCrypto.cryptoLogo),
                           ),
                         ],
                       ),
@@ -107,76 +107,13 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                         child: LineChart(
                           LineChartData(
                             titlesData: FlTitlesData(
-                              show: true,
-                              bottomTitles: AxisTitles(
-                                sideTitles: SideTitles(
-                                  showTitles: true,
-                                  reservedSize: 30, // bottom space
-                                  getTitlesWidget: (value, meta) {
-                                    switch (value.toInt()) {
-                                      case 1:
-                                        return Container(
-                                          margin: const EdgeInsets.only(top: 0),
-                                          width: 30,
-                                          child: LineChartTitleButton(
-                                            dayTitle: '5D',
-                                            titleIndex: 0,
-                                          ),
-                                        );
-                                      case 2:
-                                        return Container(
-                                          margin: const EdgeInsets.only(top: 0),
-                                          width: 30,
-                                          child: LineChartTitleButton(
-                                            dayTitle: '10D',
-                                            titleIndex: 1,
-                                          ),
-                                        );
-                                      case 3:
-                                        return Container(
-                                          margin: const EdgeInsets.only(top: 0),
-                                          width: 30,
-                                          child: LineChartTitleButton(
-                                            dayTitle: '15D',
-                                            titleIndex: 2,
-                                          ),
-                                        );
-                                      case 4:
-                                        return Container(
-                                          margin: const EdgeInsets.only(top: 0),
-                                          width: 30,
-                                          child: LineChartTitleButton(
-                                            dayTitle: '30D',
-                                            titleIndex: 3,
-                                          ),
-                                        );
-                                      case 5:
-                                        return Container(
-                                          margin: const EdgeInsets.only(top: 0),
-                                          width: 30,
-                                          child: LineChartTitleButton(
-                                            dayTitle: '50D',
-                                            titleIndex: 4,
-                                          ),
-                                        );
-                                      default:
-                                    }
-                                    return const Text('');
-                                  },
-                                ),
-                              ),
-                              leftTitles: AxisTitles(
-                                  sideTitles: SideTitles(showTitles: false)),
-                              rightTitles: AxisTitles(
-                                  sideTitles: SideTitles(showTitles: false)),
-                              topTitles: AxisTitles(
-                                  sideTitles: SideTitles(showTitles: false)),
+                              show: false,
                             ),
                             backgroundColor: kDefaultBackgroundColor,
                             minX: 0,
-                            maxX: 10,
                             minY: 0,
-                            maxY: 15,
+                            // maxX: 10,
+                            // maxY: 15,
                             gridData: FlGridData(
                               show: true,
                               getDrawingHorizontalLine: (value) {
@@ -196,7 +133,6 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                                 bottom: BorderSide(
                                     color: kDefaultGrey.withOpacity(0.3)),
                               ),
-                       
                             ),
                             lineBarsData: [
                               LineChartBarData(
@@ -214,6 +150,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                           ),
                         ),
                       ),
+                      const ChartListViewButtons(),
                       ListTile(
                         title: const Text('Preço atual'),
                         trailing: Text(
@@ -231,7 +168,8 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
                       ),
                       ListTile(
                         title: const Text('Valor'),
-                        trailing: Text('R\$ ${formater.format(dataCrypto.userBalance)}'),
+                        trailing: Text(
+                            'R\$ ${formater.format(dataCrypto.userBalance)}'),
                       ),
                     ],
                   ),

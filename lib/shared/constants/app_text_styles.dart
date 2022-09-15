@@ -48,5 +48,7 @@ const kCryptoCardExchangeTrailingTextStyle = TextStyle(
   color: kDefaultGrey,
   letterSpacing: 0.5,
 );
+const kCryptoDetailsLTileLeadingStyle = TextStyle();
+const kCryptoDetailsLTileTrailingStyle = TextStyle();
 
 const String kDefaultHideValues = "\u2022\u2022\u2022\u2022\u2022";
