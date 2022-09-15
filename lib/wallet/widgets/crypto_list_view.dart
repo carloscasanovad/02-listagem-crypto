@@ -34,9 +34,9 @@ class _CryptoListViewState extends State<CryptoListView> {
               physics: const AlwaysScrollableScrollPhysics(
                 parent: ScrollPhysics(),
               ),
-              itemCount: repository.cryptoListRepository.length,
+              itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                CryptoListModel crypto = repository.cryptoListRepository[index];
+                CryptoListModel crypto = snapshot.data![index];
                 return Card(
                   child: CryptoListTile(
                     model: crypto,

@@ -1,3 +1,4 @@
+import 'package:crypto/wallet/widgets/crypto_details.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -79,7 +80,13 @@ class _CryptoListTileState extends ConsumerState<CryptoListTile> {
           Align(
             alignment: Alignment.center,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CryptoDetails(cryptoName: widget.model.shortName,),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.arrow_forward_ios,
                 size: 14.5,
