@@ -1,24 +1,18 @@
-import 'package:crypto/wallet/widgets/chart_list_view_buttons.dart';
 import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:crypto/shared/providers/asset_provider.dart';
 import 'package:intl/intl.dart';
 
 import '../../shared/constants/app_colors.dart';
 import '../../shared/model/crypto_list_model.dart';
+import '../../shared/providers/providers.dart';
 import '../../shared/repositories/crypto_list_repository.dart';
 import '../providers/providers.dart';
-import 'chart_button.dart';
+import 'chart_list_view_buttons.dart';
 
 class CryptoDetailsBody extends ConsumerStatefulWidget {
-  String cryptoName;
-  CryptoDetailsBody({
-    required this.cryptoName,
-  });
-
   @override
   ConsumerState<CryptoDetailsBody> createState() => _CryptoDetailsBodyState();
 }
@@ -30,7 +24,6 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
   int chartIndex = 0;
   @override
   void initState() {
-
     cryptos = repository.getAllCryptos();
     super.initState();
   }
@@ -39,6 +32,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
   Widget build(BuildContext context) {
     final formater = NumberFormat("#,##0.00", "pt");
     int chartIndex = ref.watch(chartIndexTappedProvider);
+    String cryptoName = ref.watch(cryptoFilterProvider);
     return SingleChildScrollView(
       child: FutureBuilder(
         future: cryptos,
@@ -46,7 +40,7 @@ class _CryptoDetailsBodyState extends ConsumerState<CryptoDetailsBody> {
             AsyncSnapshot<List<CryptoListModel>> snapshot) {
           if (snapshot.hasData) {
             CryptoListModel dataCrypto = snapshot.data!.firstWhere(
-              (crypto) => crypto.shortName == widget.cryptoName,
+              (crypto) => crypto.shortName == cryptoName,
             );
             List points =
                 dataCrypto.marketPriceUpnDown.values.toList()[chartIndex];

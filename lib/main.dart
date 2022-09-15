@@ -1,9 +1,9 @@
 import 'package:crypto/transactions/transactions_page.dart';
-import 'package:crypto/wallet/widgets/crypto_details.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'details/views/details_page.dart';
 import 'shared/widgets/bottom_nav_bar.dart';
 import 'wallet/views/wallet_page.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const BottomNavBar(),
           '/wallet': (context) => const WalletPage(),
           '/transactions': (context) => const TransactionsPage(),
-          //'/cryptoDetails': (context) => const CryptoDetails(),
+          '/details': (context) =>  DetailsPage(),
         },
       );
 }

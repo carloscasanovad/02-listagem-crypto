@@ -1,4 +1,4 @@
-import 'package:crypto/wallet/widgets/chart_button.dart';
+import 'package:crypto/details/widgets/chart_button.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

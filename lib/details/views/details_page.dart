@@ -5,13 +5,11 @@ import 'package:crypto/shared/constants/app_text_styles.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../providers/providers.dart';
-import 'crypto_details_body.dart';
+import '../widgets/crypto_details_body.dart';
 
-class CryptoDetails extends HookConsumerWidget {
-  String cryptoName;
-  CryptoDetails({
+class DetailsPage extends HookConsumerWidget {
+  DetailsPage({
     Key? key,
-    required this.cryptoName,
   }) : super(key: key);
 
   @override
@@ -36,9 +34,7 @@ class CryptoDetails extends HookConsumerWidget {
           ),
         ),
       ),
-      body: CryptoDetailsBody(
-        cryptoName: cryptoName,
-      ),
+      body: CryptoDetailsBody(),
     );
   }
 }

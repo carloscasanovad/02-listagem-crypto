@@ -1,4 +1,4 @@
-import 'package:crypto/wallet/widgets/crypto_details.dart';
+import 'package:crypto/details/views/crypto_details.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 
 import '../../shared/constants/app_text_styles.dart';
 import '../../shared/model/crypto_list_model.dart';
+import '../../shared/providers/providers.dart';
 import '../providers/providers.dart';
 
 class CryptoListTile extends ConsumerStatefulWidget {
@@ -81,11 +82,9 @@ class _CryptoListTileState extends ConsumerState<CryptoListTile> {
             alignment: Alignment.center,
             child: IconButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => CryptoDetails(cryptoName: widget.model.shortName,),
-                  ),
-                );
+                ref.read(cryptoFilterProvider.notifier).state =
+                    widget.model.shortName;
+                Navigator.of(context).pushNamed('/details');
               },
               icon: const Icon(
                 Icons.arrow_forward_ios,
