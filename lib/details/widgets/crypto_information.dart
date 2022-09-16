@@ -6,8 +6,8 @@ import 'package:intl/intl.dart';
 
 import '../../shared/model/crypto_list_model.dart';
 import '../providers/providers.dart';
-import 'convert_crypto_button.dart';
 import 'crypto_infomation_row.dart';
+import 'crypto_information_variation_row.dart';
 
 class CryptoInformation extends HookConsumerWidget {
   CryptoInformation({
@@ -21,30 +21,35 @@ class CryptoInformation extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int chartIndex = ref.watch(chartIndexTappedProvider);
-    return Column(
-      children: [
-        CryptoInformationRow(
-          description: 'Preço atual',
-          value:
-              'R\$ ${formater.format(dataCrypto.marketHistoryPrice.values.toList()[chartIndex])}',
-        ),
-        CryptoInformationRow(
-          description: 'Variação do dia',
-          value:
-              ' ${(dataCrypto.percentVariation.values.toList()[chartIndex]).toStringAsFixed(2)}%',
-        ),
-        CryptoInformationRow(
-          description: 'Quantidade',
-          value:
-              '${(Decimal.parse(dataCrypto.userBalance.toString()) * dataCrypto.exchange).toStringAsFixed(2)} ${dataCrypto.shortName}',
-        ),
-        CryptoInformationRow(
-          description: 'Valor',
-          value: 'R\$ ${formater.format(dataCrypto.userBalance)}',
-        ),
-        const SizedBox(height: 30),
-        const ConvertCryptoButton(),
-      ],
+    double dayVariation =
+        dataCrypto.percentVariation.values.toList()[chartIndex];
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 8,
+        bottom: 30,
+      ),
+      child: Column(
+        children: [
+          CryptoInformationRow(
+            description: 'Preço atual',
+            value:
+                'R\$ ${formater.format(dataCrypto.marketHistoryPrice.values.toList()[chartIndex])}',
+          ),
+          CryptoInformationVariationRow(
+            description: 'Variação do dia',
+            value: dayVariation,
+          ),
+          CryptoInformationRow(
+            description: 'Quantidade',
+            value:
+                '${(Decimal.parse(dataCrypto.userBalance.toString()) * dataCrypto.exchange).toStringAsFixed(2)} ${dataCrypto.shortName}',
+          ),
+          CryptoInformationRow(
+            description: 'Valor',
+            value: 'R\$ ${formater.format(dataCrypto.userBalance)}',
+          ),
+        ],
+      ),
     );
   }
 }

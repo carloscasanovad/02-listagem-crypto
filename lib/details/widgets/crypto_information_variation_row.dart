@@ -1,15 +1,16 @@
+import 'package:crypto/shared/constants/app_colors.dart';
 import 'package:crypto/shared/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-class CryptoInformationRow extends StatelessWidget {
-  const CryptoInformationRow({
+class CryptoInformationVariationRow extends StatelessWidget {
+  const CryptoInformationVariationRow({
     Key? key,
     required this.description,
     required this.value,
   }) : super(key: key);
 
   final String description;
-  final String value;
+  final double value;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,14 @@ class CryptoInformationRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(description, style: kDetailsCryptoInfoDescriptionStyle),
-            Text(value, style: kDetailsCryptoInfoValueStyle),
+            Text(
+              ' ${(value).toStringAsFixed(2)}%',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: value > 0 ? kDefaultGreen : kDefaultRed,
+              ),
+            ),
           ],
         ),
       ],

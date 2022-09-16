@@ -17,7 +17,10 @@ class LineChartButtonWidget extends HookConsumerWidget {
     int chartIndexTapped = ref.watch(chartIndexTappedProvider);
 
     return Container(
-      margin: const EdgeInsets.only(top: 17, right: 10),
+      margin: const EdgeInsets.only(
+        top: 17,
+        right: 10,
+      ),
       width: 35,
       child: MaterialButton(
         elevation: 0,

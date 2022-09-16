@@ -7,6 +7,7 @@ import '../../shared/model/crypto_list_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/repositories/crypto_list_repository.dart';
 import '../providers/providers.dart';
+import 'convert_crypto_button.dart';
 import 'crypto_information.dart';
 import 'details_line_chart.dart';
 import 'line_chart_list_view_buttons.dart';
@@ -54,6 +55,7 @@ class _CryptoDetailsBodyState extends ConsumerState<DetailsBody> {
                 DetailsLineChart(points: points, dataCrypto: dataCrypto),
                 const LineChartListViewButtons(),
                 CryptoInformation(dataCrypto: dataCrypto),
+                const ConvertCryptoButton(),
               ],
             );
           }
