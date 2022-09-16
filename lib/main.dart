@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'details/views/details_page.dart';
-import 'shared/widgets/bottom_nav_bar.dart';
 import 'wallet/views/wallet_page.dart';
 
 void main() {
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          // '/': (context) => const BottomNavBar(),
           '/': (context) => const WalletPage(),
           '/transactions': (context) => const TransactionsPage(),
           '/details': (context) =>  DetailsPage(),

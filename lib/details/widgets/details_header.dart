@@ -34,7 +34,6 @@ class DetailsHeader extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 4),
         Text(
           dataCrypto.shortName,
           style: const TextStyle(
@@ -42,7 +41,7 @@ class DetailsHeader extends StatelessWidget {
             color: kDefaultGrey,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 14),
       ],
     );
   }

@@ -34,10 +34,7 @@ class _CryptoDetailsBodyState extends ConsumerState<DetailsBody> {
     int chartIndex = ref.watch(chartIndexTappedProvider);
     String cryptoName = ref.watch(cryptoFilterProvider);
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 18,
-        vertical: 32,
-      ),
+      padding: const EdgeInsets.all(18),
       child: FutureBuilder(
         future: cryptos,
         builder: (BuildContext context,

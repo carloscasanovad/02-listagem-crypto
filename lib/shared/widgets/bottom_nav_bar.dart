@@ -4,16 +4,11 @@ import '../constants/app_colors.dart';
 import '../providers/asset_provider.dart';
 import '../providers/providers.dart';
 
-class BottomNavBar extends ConsumerStatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+class BottomNavBar extends HookConsumerWidget {
+  const BottomNavBar({super.key});
 
   @override
-  ConsumerState<BottomNavBar> createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends ConsumerState<BottomNavBar> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     int selectedIndex = ref.watch(navBarIndexProvider);
     return BottomNavigationBar(
       selectedItemColor: kDefaultRed,

@@ -33,9 +33,10 @@ class DetailsLineChart extends HookConsumerWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        SizedBox(
+        Container(
+          margin: const EdgeInsets.only(top: 5),
           width: MediaQuery.of(context).size.width,
-          height: 220,
+          height: 140,
           child: LineChart(
             LineChartData(
               titlesData: FlTitlesData(
