@@ -6,7 +6,6 @@ import 'package:crypto/details/widgets/details_header.dart';
 import '../../shared/model/crypto_list_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/repositories/crypto_list_repository.dart';
-import '../providers/providers.dart';
 import 'convert_crypto_button.dart';
 import 'crypto_information.dart';
 import 'details_line_chart.dart';
@@ -31,7 +30,6 @@ class _CryptoDetailsBodyState extends ConsumerState<DetailsBody> {
 
   @override
   Widget build(BuildContext context) {
-    int chartIndex = ref.watch(chartIndexTappedProvider);
     String cryptoName = ref.watch(cryptoFilterProvider);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(18),
@@ -43,13 +41,11 @@ class _CryptoDetailsBodyState extends ConsumerState<DetailsBody> {
             CryptoListModel dataCrypto = snapshot.data!.firstWhere(
               (crypto) => crypto.shortName == cryptoName,
             );
-            List points =
-                dataCrypto.marketPriceUpnDown.values.toList()[chartIndex];
 
             return Column(
               children: [
                 DetailsHeader(dataCrypto: dataCrypto),
-                DetailsLineChart(points: points, dataCrypto: dataCrypto),
+                DetailsLineChart(dataCrypto: dataCrypto),
                 const LineChartListViewButtons(),
                 CryptoInformation(dataCrypto: dataCrypto),
                 const ConvertCryptoButton(),

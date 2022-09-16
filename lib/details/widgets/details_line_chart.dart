@@ -10,22 +10,24 @@ import '../../shared/model/crypto_list_model.dart';
 class DetailsLineChart extends HookConsumerWidget {
   DetailsLineChart({
     Key? key,
-    required this.points,
     required this.dataCrypto,
   }) : super(key: key);
 
-  final List points;
   final CryptoListModel dataCrypto;
   final formater = NumberFormat("#,##0.00", "pt");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int chartIndex = ref.watch(chartIndexTappedProvider);
+    double cryptoValue =
+        dataCrypto.marketHistoryPrice.values.toList()[chartIndex];
+    List points = dataCrypto.marketPriceUpnDown.values.toList()[chartIndex];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'R\$ ${formater.format(dataCrypto.marketHistoryPrice.values.toList()[chartIndex])}',
+          'R\$ ${formater.format(cryptoValue)}',
           style: const TextStyle(
             fontSize: 32,
             color: kDefaultBlack,
@@ -89,3 +91,4 @@ class DetailsLineChart extends HookConsumerWidget {
     );
   }
 }
+

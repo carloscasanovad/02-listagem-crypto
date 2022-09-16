@@ -38,8 +38,9 @@ dependencies:
   hooks_riverpod: ^1.0.4
   decimal: ^2.3.0
   http: ^0.13.5
-  device_preview: ^1.1.0
   fl_chart: ^0.55.1
+
+  countup: ^0.1.4
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  device_preview: ^1.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
