@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => const BottomNavBar(),
-          '/wallet': (context) => const WalletPage(),
+          // '/': (context) => const BottomNavBar(),
+          '/': (context) => const WalletPage(),
           '/transactions': (context) => const TransactionsPage(),
           '/details': (context) =>  DetailsPage(),
         },
