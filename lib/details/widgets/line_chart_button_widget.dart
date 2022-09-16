@@ -4,10 +4,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/constants/app_colors.dart';
 import '../providers/providers.dart';
 
-class ChartButton extends HookConsumerWidget {
+class LineChartButtonWidget extends HookConsumerWidget {
   int titleIndex;
   String dayTitle;
-  ChartButton({
+  LineChartButtonWidget({
     required this.titleIndex,
     required this.dayTitle,
   }) : super();

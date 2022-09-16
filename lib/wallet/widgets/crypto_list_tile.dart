@@ -1,4 +1,3 @@
-import 'package:crypto/details/views/crypto_details.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

@@ -5,7 +5,7 @@ import 'package:crypto/shared/constants/app_text_styles.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../providers/providers.dart';
-import '../widgets/crypto_details_body.dart';
+import '../widgets/details_body.dart';
 
 class DetailsPage extends HookConsumerWidget {
   DetailsPage({
@@ -34,7 +34,7 @@ class DetailsPage extends HookConsumerWidget {
           ),
         ),
       ),
-      body: CryptoDetailsBody(),
+      body: DetailsBody(),
     );
   }
 }
