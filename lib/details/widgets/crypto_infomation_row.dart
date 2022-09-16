@@ -1,3 +1,5 @@
+import 'package:crypto/shared/constants/app_colors.dart';
+import 'package:crypto/shared/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CryptoInformationRow extends StatelessWidget {
@@ -16,8 +18,8 @@ class CryptoInformationRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(description),
-        Text(value),
+        Text(description, style: kDetailsCryptoInfoDescriptionStyle),
+        Text(value, style: kDetailsCryptoInfoValueStyle),
       ],
     );
   }

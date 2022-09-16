@@ -8,7 +8,7 @@ class LineChartListViewButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
-      height: 35,
+      height: 38,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [

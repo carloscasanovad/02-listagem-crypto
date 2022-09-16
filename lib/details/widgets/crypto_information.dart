@@ -20,7 +20,7 @@ class CryptoInformation extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     int chartIndex = ref.watch(chartIndexTappedProvider);
     return Wrap(
-      runSpacing: 10,
+      runSpacing: 15,
       children: [
         CryptoInformationRow(
           description: 'Preço atual',

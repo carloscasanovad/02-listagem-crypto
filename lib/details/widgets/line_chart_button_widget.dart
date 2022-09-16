@@ -35,7 +35,7 @@ class LineChartButtonWidget extends HookConsumerWidget {
         },
         child: Text(
           dayTitle,
-          style: const TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 14),
         ),
       ),
     );
