@@ -31,7 +31,7 @@ class _CryptoDetailsBodyState extends ConsumerState<DetailsBody> {
   @override
   Widget build(BuildContext context) {
     String cryptoName = ref.watch(cryptoFilterProvider);
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.all(18),
       child: FutureBuilder(
         future: cryptos,
