@@ -1,3 +1,4 @@
+import 'package:crypto/shared/constants/app_colors.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -5,6 +6,7 @@ import 'package:intl/intl.dart';
 
 import '../../shared/model/crypto_list_model.dart';
 import '../providers/providers.dart';
+import 'convert_crypto_button.dart';
 import 'crypto_infomation_row.dart';
 
 class CryptoInformation extends HookConsumerWidget {
@@ -19,8 +21,7 @@ class CryptoInformation extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int chartIndex = ref.watch(chartIndexTappedProvider);
-    return Wrap(
-      runSpacing: 15,
+    return Column(
       children: [
         CryptoInformationRow(
           description: 'Preço atual',
@@ -41,6 +42,8 @@ class CryptoInformation extends HookConsumerWidget {
           description: 'Valor',
           value: 'R\$ ${formater.format(dataCrypto.userBalance)}',
         ),
+        const SizedBox(height: 30),
+        const ConvertCryptoButton(),
       ],
     );
   }

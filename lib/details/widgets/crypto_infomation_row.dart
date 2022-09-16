@@ -14,12 +14,20 @@ class CryptoInformationRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Column(
       children: [
-        Text(description, style: kDetailsCryptoInfoDescriptionStyle),
-        Text(value, style: kDetailsCryptoInfoValueStyle),
+        const Divider(
+          thickness: 1,
+          height: 30,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(description, style: kDetailsCryptoInfoDescriptionStyle),
+            Text(value, style: kDetailsCryptoInfoValueStyle),
+          ],
+        ),
       ],
     );
   }
