@@ -12,6 +12,7 @@ class DetailsPage extends HookConsumerWidget {
     Key? key,
   }) : super(key: key);
 
+  static const route = '/details';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -34,7 +35,7 @@ class DetailsPage extends HookConsumerWidget {
           ),
         ),
       ),
-      body: DetailsBody(),
+      body: const DetailsBody(),
     );
   }
 }

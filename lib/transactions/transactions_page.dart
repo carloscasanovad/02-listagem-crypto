@@ -5,7 +5,7 @@ import '../shared/widgets/bottom_nav_bar.dart';
 
 class TransactionsPage extends StatelessWidget {
   const TransactionsPage({Key? key}) : super(key: key);
-
+  static const route = "/transaction";
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
