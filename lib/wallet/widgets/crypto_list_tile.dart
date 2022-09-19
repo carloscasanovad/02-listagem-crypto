@@ -1,47 +1,43 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../shared/constants/app_text_styles.dart';
 import '../../shared/model/crypto_list_model.dart';
+import '../../shared/providers/providers.dart';
 import '../providers/providers.dart';
 
-class CryptoListTile extends ConsumerStatefulWidget {
+class CryptoListTile extends HookConsumerWidget {
   CryptoListModel model;
   CryptoListTile({
     Key? key,
     required this.model,
   }) : super(key: key);
 
-  @override
-  ConsumerState<CryptoListTile> createState() => _CryptoListTileState();
-}
-
-class _CryptoListTileState extends ConsumerState<CryptoListTile> {
   final formater = NumberFormat("#,##0.00", "pt");
-  String currencyConverter(double balance, double exchange, String currency) {
-    String cryptoExchange = '';
-    cryptoExchange = '${(balance / exchange).toStringAsFixed(2)} $currency';
-    return cryptoExchange;
+  String currencyConverter(Decimal balance, Decimal exchange, String currency) {
+    Decimal cryptoExchange = balance * exchange;
+    return '${cryptoExchange.toStringAsFixed(2)} $currency';
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final bool visibility = ref.watch(visibilityProvider);
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 15),
       title: Text(
-        widget.model.shortName,
+        model.shortName,
         style: kCryptoCardTitleStyle,
       ),
       subtitle: Text(
-        widget.model.fullName,
+        model.fullName,
         style: kCryptoCardSubtitleStyle,
       ),
       leading: CircleAvatar(
         backgroundColor: const Color(0x00ffffff),
         radius: 20,
-        backgroundImage: AssetImage(widget.model.cryptoLogo),
+        backgroundImage: AssetImage(model.cryptoLogo),
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
@@ -52,24 +48,24 @@ class _CryptoListTileState extends ConsumerState<CryptoListTile> {
             children: <Widget>[
               Text(
                 visibility
-                    ? 'R\$ ${formater.format(widget.model.userBalance)}'
+                    ? 'R\$ ${formater.format(model.userBalance)}'
                     : 'R\$ $kDefaultHideValues',
                 style: kCryptoCardBalanceTrailingTextStyle,
               ),
               Container(
                 padding: const EdgeInsets.only(top: 4),
-                width: 80,
+                width: 100,
                 height: 20,
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
                     visibility
                         ? currencyConverter(
-                            widget.model.userBalance.toDouble(),
-                            widget.model.exchange.toDouble(),
-                            widget.model.shortName,
+                            Decimal.parse(model.userBalance.toString()),
+                            model.exchange,
+                            model.shortName,
                           )
-                        : "$kDefaultHideValues ${widget.model.shortName}",
+                        : "$kDefaultHideValues ${model.shortName}",
                     style: kCryptoCardExchangeTrailingTextStyle,
                   ),
                 ),
@@ -79,7 +75,10 @@ class _CryptoListTileState extends ConsumerState<CryptoListTile> {
           Align(
             alignment: Alignment.center,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                ref.read(cryptoFilterProvider.notifier).state = model.shortName;
+                Navigator.of(context).pushNamed('/details');
+              },
               icon: const Icon(
                 Icons.arrow_forward_ios,
                 size: 14.5,

@@ -1,10 +1,11 @@
-import 'package:crypto/shared/constants/app_colors.dart';
 import 'package:crypto/shared/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../shared/widgets/bottom_nav_bar.dart';
+
 class TransactionsPage extends StatelessWidget {
   const TransactionsPage({Key? key}) : super(key: key);
-
+  static const route = "/transaction";
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -17,6 +18,7 @@ class TransactionsPage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

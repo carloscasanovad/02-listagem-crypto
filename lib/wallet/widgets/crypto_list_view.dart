@@ -17,8 +17,13 @@ class _CryptoListViewState extends State<CryptoListView> {
 
   @override
   void initState() {
-    cryptos = repository.getAllCryptos();
+    getCryptosData();
     super.initState();
+  }
+
+  Future<void> getCryptosData() {
+    cryptos = repository.getAllCryptos();
+    return cryptos;
   }
 
   @override
@@ -29,20 +34,25 @@ class _CryptoListViewState extends State<CryptoListView> {
         builder: (BuildContext context,
             AsyncSnapshot<List<CryptoListModel>> snapshot) {
           if (snapshot.hasData) {
-            return ListView.builder(
-              shrinkWrap: true,
-              physics: const AlwaysScrollableScrollPhysics(
-                parent: ScrollPhysics(),
-              ),
-              itemCount: repository.cryptoListRepository.length,
-              itemBuilder: (context, index) {
-                CryptoListModel crypto = repository.cryptoListRepository[index];
-                return Card(
-                  child: CryptoListTile(
-                    model: crypto,
-                  ),
-                );
+            return RefreshIndicator(
+              onRefresh: () {
+                return getCryptosData();
               },
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: const AlwaysScrollableScrollPhysics(
+                  parent: ScrollPhysics(),
+                ),
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  CryptoListModel crypto = snapshot.data![index];
+                  return Card(
+                    child: CryptoListTile(
+                      model: crypto,
+                    ),
+                  );
+                },
+              ),
             );
           }
           return const Center(

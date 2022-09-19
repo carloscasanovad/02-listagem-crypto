@@ -13,6 +13,12 @@ const kWalletBalanceTextStyle = TextStyle(
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w700,
 );
+const kDetailsTitleTextStyle = TextStyle(
+  fontSize: 21,
+  color: kDefaultBlack,
+  fontFamily: 'Montserrat',
+  fontWeight: FontWeight.w700,
+);
 const kSubtitleTextStyle = TextStyle(
   fontSize: 18,
   color: kDefaultGrey,
@@ -41,6 +47,14 @@ const kCryptoCardExchangeTrailingTextStyle = TextStyle(
   fontWeight: FontWeight.w700,
   color: kDefaultGrey,
   letterSpacing: 0.5,
+);
+const kDetailsCryptoInfoDescriptionStyle = TextStyle(
+  color: kDefaultGrey,
+  fontSize: 18,
+);
+const kDetailsCryptoInfoValueStyle = TextStyle(
+  color: kDefaultBlack,
+  fontSize: 18,
 );
 
 const String kDefaultHideValues = "\u2022\u2022\u2022\u2022\u2022";

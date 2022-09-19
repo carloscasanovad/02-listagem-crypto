@@ -1,9 +1,10 @@
+import 'package:crypto/shared/routes/routes.dart';
 import 'package:crypto/transactions/transactions_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'shared/widgets/bottom_nav_bar.dart';
+import 'details/views/details_page.dart';
 import 'wallet/views/wallet_page.dart';
 
 void main() {
@@ -25,10 +26,6 @@ class MyApp extends StatelessWidget {
         title: 'Crypto',
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
-        routes: {
-          '/': (context) => const BottomNavBar(),
-          '/wallet': (context) => const WalletPage(),
-          '/transactions': (context) => const TransactionsPage(),
-        },
+        routes: routes,
       );
 }
